@@ -28,6 +28,7 @@
         return redirect('/'); 
     });
 
+    //Siswa Resources
     Route::get('siswa/cari',['uses'=>'SiswaController@cari', 'as'=> 'carisiswa']);
     
     Route::get('siswa/create', 'SiswaController@create');
@@ -42,7 +43,7 @@
 
     Route::delete('siswa/{siswa}', 'SiswaController@destroy');
 
-    
+    //User Resources
     Route::get('user', 'UserController@index');
 
     Route::get('user/create', 'UserController@create');
@@ -56,20 +57,19 @@
     Route::patch('user/{user}', 'UserController@update');
 
     Route::delete('user/{user}', 'UserController@destroy');
- 
+
+
+    //Matakuliah resources
     Route::get('matkul', 'MataKuliahController@index');
     
+    
+    //Dosen Resources
     Route::get('dosen', 'DosenController@index');
     
-    
-    
-    
-   
-
-    //Route::resource('user','UserController');
-
+    //Kelas Resources
     Route::resource('kelas','KelasController');
     
+    //Hobi Resources
     Route::resource('hobi','HobiController');
 
 

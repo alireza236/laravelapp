@@ -19,7 +19,11 @@ class SiswaController extends Controller
     //
     public function __construct()
     {
-       $this->middleware('auth');
+       $this->middleware('auth',['except'=>[
+           'index',
+           'show',
+           'cari'
+       ]]);
     }
     
     public function cari(Request $request){

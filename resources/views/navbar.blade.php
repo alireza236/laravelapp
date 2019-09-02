@@ -21,37 +21,43 @@
             <a class="nav-link" href="{{ url('about') }}">About</a>
         @endif
       </li>
-        
+
+      @if (Auth::check())
       <li class="nav-item">
         @if (!empty($halaman) && $halaman == 'kelas')
-            <a class="nav-link active" href="{{ url('kelas') }}">Kelas<span class="sr-only">(current)</span></a>
+        <a class="nav-link active" href="{{ url('kelas') }}">Kelas<span class="sr-only">(current)</span></a>
         @else
-            <a class="nav-link" href="{{ url('kelas') }}">Kelas</a>
+        <a class="nav-link" href="{{ url('kelas') }}">Kelas</a>
         @endif
       </li> 
+      @endif
 
+      @if (Auth::check())
       <li class="nav-item">
         @if (!empty($halaman) && $halaman == 'hobi')
-            <a class="nav-link active" href="{{ url('hobi') }}">Kelas<span class="sr-only">(current)</span></a>
+        <a class="nav-link active" href="{{ url('hobi') }}">Kelas<span class="sr-only">(current)</span></a>
         @else
-            <a class="nav-link" href="{{ url('hobi') }}">Hobi</a>
+        <a class="nav-link" href="{{ url('hobi') }}">Hobi</a>
         @endif
       </li> 
-       <li class="nav-item">
+      @endif
+
+    @if (Auth::check() && Auth::user()->level == 'admin' )
+      <li class="nav-item">
         @if (!empty($halaman) && $halaman == 'user')
-            <a class="nav-link active" href="{{ url('user') }}">User<span class="sr-only">(current)</span></a>
+        <a class="nav-link active" href="{{ url('user') }}">User<span class="sr-only">(current)</span></a>
         @else
-            <a class="nav-link" href="{{ url('user') }}">User</a>
+        <a class="nav-link" href="{{ url('user') }}">User</a>
         @endif
       </li> 
+    @endif
     </ul>
+
     <ul class="form-inline my-2 my-lg-0">
       @if (Auth::check())
-      
-      <a href="{{ url('logout') }}" class="btn btn-success my-2 my-sm-0">{{ Auth::user()->name }}</a>
+        <a href="{{ url('logout') }}" class="btn btn-success my-2 my-sm-0">{{ Auth::user()->name }}</a>
       @else
-          
-      <a href="{{ url('login') }}" class="btn btn-success my-2 my-sm-0">Login</a>
+        <a href="{{ url('login') }}" class="btn btn-success my-2 my-sm-0">Login</a>
       @endif
     </ul>
   </div>

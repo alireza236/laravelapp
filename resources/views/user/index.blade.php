@@ -46,10 +46,11 @@
     @else 
         <p> tidak ada data user</p>
     @endif
-   
-    <div class="bottom-nav">
-        <a href="user/create" class="btn btn-primary"> Tambah User</a>
-    </div>
+   @if (Auth::check())
+      <div class="bottom-nav">
+         <a href="user/create" class="btn btn-primary"> Tambah User</a>
+       </div>
+    @endif
 </div>
 @endsection
 
